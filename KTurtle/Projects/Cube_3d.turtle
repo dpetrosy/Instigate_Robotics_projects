@@ -1,0 +1,152 @@
+kturtle-script-v1.0
+#Qani vor Kturtle cragir@ chi haskanum hayeren@, stipnac em commentner@ grel angleren)
+#Dashti chap@ [400,400], xoranardi koxi erkarutyun@ 100
+
+@(reset) 
+
+#Nisti koxm e gcum @ndhat gcerov
+@(learn) Nistikoxm_yndhat {
+  @(turnright) 90
+  @(for) $i = 1 @(to) 10 {
+    @(pendown)
+    @(forward) 4
+    @(penup)
+    @(forward) 6
+    $bool = @(true)
+  }
+}
+
+#Gagatner@ miacnox koxn e gcum @ndhat gcerov
+@(learn) Koxm_yndhat $gagat_x@(,) $gagat_y {
+  @(go) $gagat_x@(,) $gagat_y
+  @(direction) $ANKYUN
+  @(for) $k = 1 @(to) 7 {
+    @(pendown)
+    @(forward) $KOXM/14
+    @(penup)
+    @(forward) $KOXM/14
+    @(pendown)
+  }
+}
+
+#Gcum e hetevi nist@(qarakusin)
+@(learn) Hetevinist $yndhat_1@(,) $yndhat_2 {
+  @(go) $GAGAT_5_X@(,) $GAGAT_5_Y
+  @(for) $j = 1 @(to) 4 {
+    @(if) ($j == $yndhat_1) @(or) ($j == $yndhat_2) {
+      Nistikoxm_yndhat
+    }
+    @(else) {
+      @(pendown)
+      @(turnright) 90
+      @(forward) 100
+    }
+  }
+}
+
+#Stananq ditaketi X ev Y koordinatner@, miajamanak stugelov vor linen dashti mej
+$X = @(ask) "Tpir ditaketi x koordinat@ [0,400] mijakayqum"
+$Y = @(ask) "Tpir ditaketi y koordinat@ [0,400] mijakayqum"
+@(if) ($X < 0) @(or) ($X > 400) @(or) ($Y < 0) @(or) ($Y > 400){
+  @(message) "Ditaketi koordinatner@ petq e linen [0,400] mijakayqum"
+}
+
+$bool = @(false)
+
+@(if) ($X >= 0) @(and) ($X <= 400) @(and) ($Y >= 0) @(and) ($Y <= 400) {
+  #Tanq motaka nisti(qarakusu) gagatneri koordinatner@, dzaxi verevi gagat@ hamarenq GAGAT_1
+  $GAGAT_1_X = 150
+  $GAGAT_1_Y = 150
+  $GAGAT_2_X = 250
+  $GAGAT_2_Y = 150
+  $GAGAT_3_X = 150
+  $GAGAT_3_Y = 250
+  $GAGAT_4_X = 250
+  $GAGAT_4_Y = 250
+
+  #Hashvenq hetevi nisti(qarakusu) dzax verevi gagati` GAGAt_5 i koordinatner@
+  $GAGAT_5_X = $X/4 + 100
+  $GAGAT_5_Y = $Y/4 + 100
+
+  #Hashvenq gagatner@ miacnox koxeri erkarutyun@
+  $KOXM = @(sqrt)((150 - $GAGAT_5_Y)^2 + (150 - $GAGAT_5_X)^2)
+
+  #Gcenq motaka nist@(qarakusin)
+  @(go) 150@(,) 150
+  @(repeat) 4 {
+    @(turnright) 90
+    @(forward) 100
+  }
+
+  #If@ kanxum e zroyi vra bajanum@
+  @(if) 150 - $GAGAT_5_X != 0 {
+    #Gtnenq GAGAT_5 i dirq@ GAGAT_1 i handep ankyan mijocuv
+    $ANKYUN = @(arctan)((150 - $GAGAT_5_Y)/(150 - $GAGAT_5_X))
+  }
+  #Uxxenq ankyun@ kaxvac GAGAT_5 i dirqic
+  @(if) ($GAGAT_5_X > 150){
+    $ANKYUN = $ANKYUN + 90
+  }
+  @(if) ($GAGAT_5_X < 150){
+    $ANKYUN = $ANKYUN - 90
+  }
+  
+  #Voroshenq te vor koxern petq e linen @ndhat gcerov kaxvac GAGAT_ i dirqic
+  @(if) ($GAGAT_5_X > 150) @(and) ($GAGAT_5_Y < 150) {
+    Hetevinist 3@(,) 4
+    $YNDHAT_KOXM = 3
+    Koxm_yndhat $GAGAT_3_X@(,) $GAGAT_3_Y
+  }
+  @(if) ($GAGAT_5_X < 150) @(and) ($GAGAT_5_Y < 150) {
+    Hetevinist 2@(,) 3
+    $YNDHAT_KOXM = 4
+    Koxm_yndhat $GAGAT_4_X@(,) $GAGAT_4_Y
+  }
+  @(if) ($GAGAT_5_X < 150) @(and) ($GAGAT_5_Y > 150) {
+    Hetevinist 1@(,) 2
+    $YNDHAT_KOXM = 2 
+    Koxm_yndhat $GAGAT_2_X@(,) $GAGAT_2_Y
+  }
+  @(if) ($GAGAT_5_X > 150) @(and) ($GAGAT_5_Y > 150) {
+    Hetevinist 1@(,) 4
+    $YNDHAT_KOXM = 1
+    Koxm_yndhat $GAGAT_1_X@(,) $GAGAT_1_Y
+  }
+
+  #Ete @ndhat gcerov koxer chkan, gcum e hetevi nist@(qarakusi)
+  @(if) $bool == @(false) {
+    @(go) $GAGAT_5_X@(,) $GAGAT_5_Y
+    @(repeat) 4 {
+      @(turnright) 90
+      @(forward) 100
+    }
+  }
+
+  #Gcenq koxer@ motaka nisti gagatner@ miacnelov hetevi nisti gagatnerin
+  @(if) $bool {
+    @(pendown)
+    #Amen koxi hamar stugenq, ete kox@ arden gcvel e @ndhat gcerov, chgci
+    @(if) $YNDHAT_KOXM != 1 {
+      @(go) $GAGAT_1_X@(,) $GAGAT_1_Y
+      @(direction) $ANKYUN
+      @(forward) $KOXM
+    }
+    @(if) $YNDHAT_KOXM != 2 {
+      @(go) $GAGAT_2_X@(,) $GAGAT_2_Y
+      @(direction) $ANKYUN
+      @(forward) $KOXM
+    }
+    @(if) $YNDHAT_KOXM != 3 {
+      @(go) $GAGAT_3_X@(,) $GAGAT_3_Y
+      @(direction) $ANKYUN
+      @(forward) $KOXM
+    }
+    @(if) $YNDHAT_KOXM != 4 {
+      @(go) $GAGAT_4_X@(,) $GAGAT_4_Y
+      @(direction) $ANKYUN
+      @(forward) $KOXM
+    }
+}
+#Taqcnenq kriayin chxangarelu hamar
+@(spritehide)
+}

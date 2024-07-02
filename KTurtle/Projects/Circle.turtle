@@ -1,0 +1,18 @@
+kturtle-script-v1.0
+@(reset)
+
+$centerX = @(ask) "Tpir shrjani x koordinat@"
+$centerY = @(ask) "Tpir shrjani y koordinat@"
+$radius = @(ask) "Tpir sharavix@"
+@(go) $centerX@(,) $centerY
+@(forward) 1
+@(go) $centerX@(,) $centerY - $radius
+@(direction) 90
+$paragic = 2*@(pi)*$radius
+
+@(for) $i = 1 @(to) 360 {
+  @(forward) $paragic/360
+  @(turnright) 1
+}
+
+@(spritehide)

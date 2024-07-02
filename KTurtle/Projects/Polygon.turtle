@@ -1,0 +1,19 @@
+kturtle-script-v1.0
+@(reset)
+
+$koxm_qanak = @(ask) "Tpir koxmeri qanak@"
+$koxm = 700/$koxm_qanak
+
+@(if) $koxm_qanak < 3 {
+  @(message) "Koxmeri qanak@ chi karox poqr linel 2 ic"
+}
+@(else) {
+  @(go) 275@(,)275
+  @(turnleft) 90
+  @(forward) $koxm
+  @(for) $i = 1 @(to) $koxm_qanak - 1 {
+    @(turnright) 360/$koxm_qanak
+    @(forward) $koxm
+}
+
+@(spritehide)

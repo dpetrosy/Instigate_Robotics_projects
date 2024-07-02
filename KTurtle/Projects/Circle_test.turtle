@@ -1,0 +1,31 @@
+kturtle-script-v1.0
+@(reset)
+
+$centerX = @(ask) "Tpir shjani kentroni x koordinat@"
+$centerY = @(ask) "Tpir shjani kentroni x koordinat@"
+$radius = @(ask) "Tpir sharavix@"
+@(go) $centerX@(,) $centerY
+@(forward) 1
+
+@(for) $i = 1 @(to) $radius*2+1 {
+  @(go) $centerX - $radius@(,) $centerY - $radius + $i - 1
+  @(penup)
+  @(direction) 90
+  @(for) $j = 1 @(to) $radius*2+1 {
+    $c = (@(gety) - $centerY)^2 + $centerX^2 - $radius^2
+    $b = 2*$centerX
+    $D = $b^2 - 4 * $c
+    $x = ($b + @(round)(@(sqrt)($D)))/2
+    $x1 = ($b - @(round)(@(sqrt)($D)))/2
+    @(if) (@(getx) == @(round)($x)) @(or) (@(getx) == @(round)($x1)) {
+      @(pendown)
+      @(forward) 1
+      @(penup)
+    }
+    @(else) {
+      @(forward) 1
+    }
+  }
+}
+
+@(spritehide)
