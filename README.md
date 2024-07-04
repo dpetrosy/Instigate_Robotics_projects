@@ -41,4 +41,15 @@ Here are 3 small projects that I've done during a programming course for the beg
 The task was to develop a 3d model in FreeCAD. So I choose something interesting for me and made 3d model for \
 [120mm M829 Armor-Piercing, Fin-Stabilized, Discarding Sabot (APFSDS)](https://en.wikipedia.org/wiki/M829). \
 I used [these references](FreeCAD/Reference) during the development. \
-To see the 3D model, you need to download the [FreeCAD software](https://www.freecad.org/downloads.php) and open the **.FCStd** file.
+To see the 3D model download the [FreeCAD software](https://www.freecad.org/downloads.php) and open the **.FCStd** file.
+
+## 🐢 KTurtle
+
+There were 3 tasks, which needed to develop in KTurtle:
+
+* Write a pseudocode to draw any polygon.
+* Write a pseudocode to draw a circle.
+* Write a pseudocode to draw a 3d cube, which depends on viewpoint.
+
+KTurtle documentation is located [here](KTurtle/Documentation). \
+To run the sources download the [KTurtle learning environment](https://apps.kde.org/kturtle/) and open the **.turtle** files.
