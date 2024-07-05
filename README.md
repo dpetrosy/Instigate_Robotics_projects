@@ -23,7 +23,7 @@
     <span> · </span>
 	  <a href="#-kturtle">🐢 KTurtle</a>
     <span> · </span>
-      <a href="#scratch">👨🏻‍💻 Scratch</a>
+      <a href="#-scratch">👨🏻‍💻 Scratch</a>
   </h3>
 </div>
 
@@ -34,7 +34,7 @@
 Here are 3 small projects that I've done during a programming course for the beginner at Instigate Robotics.
 * 3d model developed in FreeCAD at our choice
 * KTurtle programming tasks
-* Develop a game in Scratch of our choice
+* Develop a game in Scratch at our choice
 
 ## 🛠️ FreeCAD
 
@@ -53,3 +53,8 @@ There were 3 tasks, which needed to develop in KTurtle:
 
 KTurtle documentation is located [here](KTurtle/Documentation). \
 To run the sources download the [KTurtle learning environment](https://apps.kde.org/kturtle/) and open the **.turtle** files.
+
+## 👨🏻‍💻 Scratch
+
+The task was to develop a 2d game in Scratch of our choice. \
+So I made a reaction game, to see it just open **.sb3** file in [Scratch website](https://scratch.mit.edu/).
