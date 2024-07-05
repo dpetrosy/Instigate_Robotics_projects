@@ -34,7 +34,7 @@
 Here are 3 small projects that I've done during a programming course for the beginner at Instigate Robotics.
 * 3d model developed in FreeCAD at our choice.
 * KTurtle programming tasks.
-* Develop a game in Scratch at our choice.
+* Develop a 2d game in Scratch at our choice.
 
 ## 🛠️ FreeCAD
 
